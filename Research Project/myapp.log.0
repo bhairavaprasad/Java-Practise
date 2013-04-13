@@ -1,0 +1,4 @@
+Jun 21, 2011 12:25:18 PM com.tss.test.logging.RollingLogFile main
+INFO: Logging information message.
+Jun 21, 2011 12:25:19 PM com.tss.test.logging.RollingLogFile main
+WARNING: Logging warning message.

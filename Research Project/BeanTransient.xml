@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.6.0_21" class="java.beans.XMLDecoder"> 
+ <object class="com.tss.test.beans.BeanToXmlTransient"> 
+  <void property="id"> 
+   <long>1</long> 
+  </void> 
+  <void property="itemColour"> 
+   <string>Dark Red</string> 
+  </void> 
+  <void property="itemName"> 
+   <string>T-Shirt</string> 
+  </void> 
+ </object> 
+</java> 

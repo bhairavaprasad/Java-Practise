@@ -1,0 +1,229 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>LogFileTailer</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>LogFileTailer</name>
+	<description>User interface application for Log File Tailer.</description>
+
+	<organization>
+		<name>TSS Wireless, Inc.</name>
+		<url>http://www.tsswireless.com</url>
+	</organization>
+
+	<parent>
+		<groupId>com.tsswireless</groupId>
+		<artifactId>tsswireless</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath />
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.jidesoft</groupId>
+			<artifactId>jide-oss</artifactId>
+			<version>3.4.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jgoodies</groupId>
+			<artifactId>jgoodies-common</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jgoodies</groupId>
+			<artifactId>jgoodies-forms</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jgoodies</groupId>
+			<artifactId>jgoodies-looks</artifactId>
+			<version>2.5.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.borland</groupId>
+			<artifactId>jbcl</artifactId>
+			<version>1.0</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.tsswireless</groupId>
+			<artifactId>framework</artifactId>
+			<version>1.2.49</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>castor</artifactId>
+					<groupId>org.codehaus.castor</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jdic</artifactId>
+					<groupId>org.jdesktop</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jdic-stub</artifactId>
+					<groupId>org.jdesktop</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>adaptx</artifactId>
+					<groupId>org.codehaus.castor</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jidesoft</groupId>
+			<artifactId>jide-oss</artifactId>
+			<version>3.4.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.tsswireless</groupId>
+			<artifactId>cloner</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>13.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>com.jidesoft</groupId> <artifactId>jide-oss</artifactId> 
+			<version>2.10.2</version> <scope>test</scope> </dependency> -->
+
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<finalName>logFileTailer</finalName>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<!-- webstart plugin configuration -->
+				<groupId>org.codehaus.mojo.webstart</groupId>
+				<artifactId>webstart-maven-plugin</artifactId>
+				<version>1.0-beta-2</version>
+				<executions>
+					<!-- attaches the "jnlp" goal to the "package" phase or goal can be 
+						used directly via "mvn webstart:jnlp" -->
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jnlp</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- used to configure: 1. name and location of template file, 2. name 
+						of generated file (based on project name) 3. FQN of main class -->
+					<jnlp>
+						<inputTemplateResourcePath>
+							${project.basedir}/src/</inputTemplateResourcePath>
+						<inputTemplate>main/jnlp/template.vm</inputTemplate>
+						<outputFile>${project.name}.jnlp</outputFile>
+						<mainClass>
+							com.tsswireless.tailer.bootstrap.DebugBootstrap</mainClass>
+					</jnlp>
+					<verbose>false</verbose>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<configuration>
+							<tasks>
+								<ant antfile="build.xml" target="deploy" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>

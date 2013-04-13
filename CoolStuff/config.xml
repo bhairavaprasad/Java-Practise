@@ -1,0 +1,27 @@
+<config>
+
+	<max-lines>999999999</max-lines>
+
+	<rules>
+
+		<rule match="FATAL" foreground="WHITE" background="RED" />
+
+		<rule match="ERROR" foreground="WHITE" background="RED" />
+
+		<rule match="SEVERE" foreground="WHITE" background="RED" />
+
+		<rule match="  at" foreground="WHITE" background="RED" />
+
+		<rule match="WARN" foreground="BLACK" background="YELLOW" />
+
+		<rule match="INFO" foreground="BLACK" background="GREEN" />
+
+		<rule match="DEBUG" foreground="BLACK" background="CYAN" />
+
+		<rule match="TRACE" foreground="BLACK" background="LIGHT_GRAY" />
+		
+		<rule match="exception" foreground="WHITE" background="RED" />
+
+	</rules>
+
+</config>

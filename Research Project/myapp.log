@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2011-06-21T15:57:15</date>
+  <millis>1308697035761</millis>
+  <sequence>2</sequence>
+  <logger>com.tss.test.logging.LoggerFilter</logger>
+  <level>SEVERE</level>
+  <class>com.tss.test.logging.LoggerFilter</class>
+  <method>main</method>
+  <thread>10</thread>
+  <message>Severe message</message>
+</record>
+</log>
