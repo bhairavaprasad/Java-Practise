@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.threadPriority.lesson9;
 
+//@formatter:off
 /**
  * The Thread.yield() method allows a thread to swap it off the processor and allow another thread to run. If you have a thread
  * that frequently blocks on its own, there is no need to make Thread.yield() calls. But, if you have a thread that is performing
@@ -10,6 +11,7 @@ package com.tss.threads.multiThreading.threadPriority.lesson9;
  * without using Thread.yield() and then a second time with voluntary yielding.
  *
  */
+//@formatter:on
 public class PriorityCompete3
 {
 	private volatile int count;
@@ -24,7 +26,7 @@ public class PriorityCompete3
 		
 		noStopRequested = true;
 		Runnable r = new Runnable()
-		{			
+		{
 			@Override
 			public void run()
 			{
@@ -32,7 +34,7 @@ public class PriorityCompete3
 				{
 					runWork();
 				}
-				catch(Exception e)
+				catch (Exception e)
 				{
 					e.printStackTrace();
 				}
@@ -48,16 +50,16 @@ public class PriorityCompete3
 	{
 		Thread.yield();
 		
-		while(noStopRequested)
+		while (noStopRequested)
 		{
-			if(yield)
+			if (yield)
 			{
 				Thread.yield();
 			}
 			
 			count++;
 			
-			for(int i = 0; i < 1000; i++)
+			for (int i = 0; i < 1000; i++)
 			{
 				double x = i * Math.PI / Math.E;
 			}
@@ -81,7 +83,7 @@ public class PriorityCompete3
 	
 	public String getNameAndPriority()
 	{
-		return internalThread.getName()+": Priority="+ internalThread.getPriority();			
+		return internalThread.getName() + ": Priority=" + internalThread.getPriority();
 	}
 	
 	private static void runSet(boolean yield)
@@ -91,17 +93,17 @@ public class PriorityCompete3
 		pc[1] = new PriorityCompete3("PC1", 6, yield);
 		pc[2] = new PriorityCompete3("PC2", 6, yield);
 		
-		//let the dust settle for a bit before starting them up
+		// let the dust settle for a bit before starting them up
 		try
 		{
 			Thread.sleep(1000);
 		}
 		catch (InterruptedException e)
 		{
-			//ignore
+			// ignore
 		}
 		
-		for(int i = 0; i < pc.length; i++)
+		for (int i = 0; i < pc.length; i++)
 		{
 			pc[i].startRequest();
 		}
@@ -113,45 +115,45 @@ public class PriorityCompete3
 		}
 		catch (InterruptedException e)
 		{
-			//ignore
+			// ignore
 		}
 		
-		for(int i = 0; i < pc.length; i++)
+		for (int i = 0; i < pc.length; i++)
 		{
 			pc[i].stopRequest();
 		}
 		
 		long stopTime = System.currentTimeMillis();
 		
-		//let things settle down again
+		// let things settle down again
 		try
 		{
 			Thread.sleep(1000);
 		}
 		catch (InterruptedException e)
 		{
-			//ignore
+			// ignore
 		}
 		
 		int totalCount = 0;
-		for(int i = 0; i < pc.length; i++)
+		for (int i = 0; i < pc.length; i++)
 		{
-			totalCount +=pc[i].getCount(); 
+			totalCount += pc[i].getCount();
 		}
 		
-		System.out.println("totalCount = "+totalCount+", count/ms="+roundTo(((double)totalCount) / (stopTime - startTime), 3));
+		System.out.println("totalCount = " + totalCount + ", count/ms=" + roundTo(((double) totalCount) / (stopTime - startTime), 3));
 		
-		for(int i = 0; i < pc.length; i++)
+		for (int i = 0; i < pc.length; i++)
 		{
 			double perc = roundTo(100.0 * pc[i].getCount() / totalCount, 2);
-			System.out.println(pc[i].getNameAndPriority()+", "+ perc +"%, count="+pc[i].getCount());
+			System.out.println(pc[i].getNameAndPriority() + ", " + perc + "%, count=" + pc[i].getCount());
 		}
 	}
 	
 	public static double roundTo(double val, int places)
 	{
 		double factor = Math.pow(10, places);
-		return ((int)((val * factor) + 0.5)) / factor;
+		return ((int) ((val * factor) + 0.5)) / factor;
 	}
 	
 	public static void main(String[] args)

@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.SuspendingAndResuming.lesson7;
 
+//@formatter:off
 /**
  * This example eliminates the need for the three deprecated methods stop(), suspend() and resume().
  * Notice that when a suspend request is submitted, the loop continues until the suspend check at
@@ -8,6 +9,7 @@ package com.tss.threads.multiThreading.SuspendingAndResuming.lesson7;
  * finishes its tasks in an orderly manner.
  *
  */
+//@formatter:on
 public class BestReplacement24
 {
 	private Thread internalThread;
@@ -47,7 +49,7 @@ public class BestReplacement24
 	private void runWork()
 	{
 		int count = 0;
-		while(!stopRequested)
+		while (!stopRequested)
 		{
 			try
 			{
@@ -55,16 +57,16 @@ public class BestReplacement24
 			}
 			catch (InterruptedException e)
 			{
-				//Re-assert interrupt so that remaining code
-				//sees that an interrupt has been requested.
+				// Re-assert interrupt so that remaining code
+				// sees that an interrupt has been requested.
 				Thread.currentThread().interrupt();
 				
-				//Reevaluate the while condition -- probably
-				//false now.
+				// Reevaluate the while condition -- probably
+				// false now.
 				continue;
 			}
 			
-			System.out.println("Part I - count="+count);
+			System.out.println("Part I - count=" + count);
 			
 			try
 			{
@@ -72,11 +74,11 @@ public class BestReplacement24
 			}
 			catch (InterruptedException e)
 			{
-				Thread.currentThread().interrupt(); //re-assert
-				//continue on as if sleep completed normally
+				Thread.currentThread().interrupt(); // re-assert
+				// continue on as if sleep completed normally
 			}
 			
-			System.out.println("Part II - count="+count);
+			System.out.println("Part II - count=" + count);
 			
 			try
 			{
@@ -84,22 +86,23 @@ public class BestReplacement24
 			}
 			catch (InterruptedException e)
 			{
-				Thread.currentThread().interrupt(); //re-assert
-				//continue on as if sleep completed normally
+				Thread.currentThread().interrupt(); // re-assert
+				// continue on as if sleep completed normally
 			}
 			
-			System.out.println("Part III - count="+count);
+			System.out.println("Part III - count=" + count);
 			
 			count++;
 		}
 	}
 	
-	private void waitWhileSuspended() throws InterruptedException
+	private void waitWhileSuspended()
+		throws InterruptedException
 	{
-		//only called by internal thread - private method
-		synchronized(suspendRequested)
+		// only called by internal thread - private method
+		synchronized (suspendRequested)
 		{
-			if(suspendRequested.isTrue())
+			if (suspendRequested.isTrue())
 			{
 				try
 				{
@@ -124,9 +127,10 @@ public class BestReplacement24
 		suspendRequested.setValue(false);
 	}
 	
-	public boolean waitForActualSuspension(long msTimeOut) throws InterruptedException
+	public boolean waitForActualSuspension(long msTimeOut)
+		throws InterruptedException
 	{
-		//Returns 'true' if suspended, 'false' if the timeout expired
+		// Returns 'true' if suspended, 'false' if the timeout expired
 		return internalThreadSuspended.waitUntilTrue(msTimeOut);
 	}
 	
@@ -146,7 +150,7 @@ public class BestReplacement24
 		try
 		{
 			BestReplacement24 br = new BestReplacement24();
-			System.out.println("--> just created, br.isAlive="+br.isAlive());
+			System.out.println("--> just created, br.isAlive=" + br.isAlive());
 			Thread.sleep(4200);
 			
 			long startTime = System.currentTimeMillis();
@@ -156,13 +160,13 @@ public class BestReplacement24
 			boolean suspensionTookEffect = br.waitForActualSuspension(10000);
 			long stopTime = System.currentTimeMillis();
 			
-			if(suspensionTookEffect)
+			if (suspensionTookEffect)
 			{
-				System.out.println("--> the internal thread took "+ (stopTime-startTime)+" ms to notice "+"\n the suspend request and is now suspended");				
+				System.out.println("--> the internal thread took " + (stopTime - startTime) + " ms to notice " + "\n the suspend request and is now suspended");
 			}
 			else
 			{
-				System.out.println("--> the internal thread did not notice the suspended rquested"+" \n within 10 seconds");				
+				System.out.println("--> the internal thread did not notice the suspended rquested" + " \n within 10 seconds");
 			}
 			
 			Thread.sleep(5000);

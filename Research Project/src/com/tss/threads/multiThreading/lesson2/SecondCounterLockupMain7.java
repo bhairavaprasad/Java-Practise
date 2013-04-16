@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+//@formatter:off
 /**
  * As the name suggests, running SecondCounterLockupMain7 will not work as intended and locks
  * up the JVM.
@@ -36,6 +37,7 @@ import javax.swing.border.EmptyBorder;
  *  responsive.
  *
  */
+//@formatter:on
 public class SecondCounterLockupMain7 extends JPanel
 {
 	/**
@@ -52,7 +54,7 @@ public class SecondCounterLockupMain7 extends JPanel
 		startButton = new JButton("Start");
 		stopButton = new JButton("Stop");
 		
-		stopButton.setEnabled(false); //begin this with disabled
+		stopButton.setEnabled(false); // begin this with disabled
 		
 		startButton.addActionListener(new ActionListener()
 		{
@@ -60,14 +62,14 @@ public class SecondCounterLockupMain7 extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				//disable to stop more "start" requests
+				// disable to stop more "start" requests
 				startButton.setEnabled(false);
 				
-				//Run the counter. Watch out, trouble here
+				// Run the counter. Watch out, trouble here
 				sc.runClock();
 				
 				stopButton.setEnabled(true);
-				stopButton.requestFocus();				
+				stopButton.requestFocus();
 			}
 		});
 		
@@ -80,11 +82,11 @@ public class SecondCounterLockupMain7 extends JPanel
 				stopButton.setEnabled(false);
 				sc.stopClock();
 				startButton.setEnabled(true);
-				startButton.requestFocus();				
+				startButton.requestFocus();
 			}
 		});
 		
-		JPanel innerButtonPanel = new JPanel();		
+		JPanel innerButtonPanel = new JPanel();
 		innerButtonPanel.setLayout(new GridLayout(0, 1, 0, 3));
 		innerButtonPanel.add(startButton);
 		innerButtonPanel.add(stopButton);
@@ -94,20 +96,20 @@ public class SecondCounterLockupMain7 extends JPanel
 		buttonP.add(innerButtonPanel, BorderLayout.NORTH);
 		
 		this.setLayout(new BorderLayout(10, 10));
-		this.setBorder(new EmptyBorder(20,20,20,20));
+		this.setBorder(new EmptyBorder(20, 20, 20, 20));
 		this.add(buttonP, BorderLayout.NORTH);
-		this.add(sc, BorderLayout.CENTER);			
+		this.add(sc, BorderLayout.CENTER);
 	}
 	
 	public static void main(String[] args)
 	{
-		System.out.println("Current Thread = "+Thread.currentThread().getName());
+		System.out.println("Current Thread = " + Thread.currentThread().getName());
 		SecondCounterLockupMain7 scm = new SecondCounterLockupMain7();
 		
 		JFrame f = new JFrame("Second Counter Lockup");
 		f.setContentPane(scm);
 		f.setSize(320, 400);
-		System.out.println("Current Thread before setting the frame visible = "+Thread.currentThread().getName());
+		System.out.println("Current Thread before setting the frame visible = " + Thread.currentThread().getName());
 		f.setVisible(true);
 		f.addWindowListener(new WindowAdapter()
 		{

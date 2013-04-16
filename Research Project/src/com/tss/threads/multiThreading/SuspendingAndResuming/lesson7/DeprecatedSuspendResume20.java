@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.SuspendingAndResuming.lesson7;
 
+//@formatter:off
 /**
  * Although suspending a thread while its holding a lock on a shared resource can be disastrous,
  * suspending it while it's in the middle of long-running computation can also lead to problems.
@@ -26,9 +27,10 @@ package com.tss.threads.multiThreading.SuspendingAndResuming.lesson7;
  * is called.
  *
  */
+//@formatter:on
 public class DeprecatedSuspendResume20 implements Runnable
 {
-
+	
 	private volatile int firstVal;
 	private volatile int secondVal;
 	
@@ -53,24 +55,26 @@ public class DeprecatedSuspendResume20 implements Runnable
 		
 	}
 	
-	private void workMethod() throws InterruptedException
+	private void workMethod()
+		throws InterruptedException
 	{
 		int val = 1;
 		
-		while(true)
+		while (true)
 		{
 			stepOne(val);
 			stepTwo(val);
 			val++;
 			
-			Thread.sleep(200); //pause before looping again
+			Thread.sleep(200); // pause before looping again
 		}
 	}
 	
-	private void stepOne(int val) throws InterruptedException
+	private void stepOne(int val)
+		throws InterruptedException
 	{
 		firstVal = val;
-		Thread.sleep(300); //simulate some other long long process
+		Thread.sleep(300); // simulate some other long long process
 	}
 	
 	private void stepTwo(int val)
@@ -85,36 +89,37 @@ public class DeprecatedSuspendResume20 implements Runnable
 		Thread t = new Thread(dsr);
 		t.start();
 		
-		//let the other thread get going and run for a while
-		//by making the main thread to sleep for a while		
+		// let the other thread get going and run for a while
+		// by making the main thread to sleep for a while
 		try
 		{
 			Thread.sleep(1000);
 		}
 		catch (InterruptedException e)
 		{
-			//ignore
+			// ignore
 		}
 		
 		for (int i = 0; i < 10; i++)
 		{
 			t.suspend();
-			System.out.println("dsr.areValuesEqual()="+dsr.areValuesEqual());
+			System.out.println("dsr.areValuesEqual()=" + dsr.areValuesEqual());
 			t.resume();
 			
 			try
 			{
-				//pause this main thread running this loop for a random amount of time
-				//between 0 and 2 seconds.
-				Thread.sleep((long)(Math.random() * 2000.0));
+				// pause this main thread running this loop for a random amount
+				// of time
+				// between 0 and 2 seconds.
+				Thread.sleep((long) (Math.random() * 2000.0));
 			}
 			catch (InterruptedException e)
 			{
-				//ignore
+				// ignore
 			}
 		}
 		
-		System.exit(0); //abruptly terminate application
+		System.exit(0); // abruptly terminate application
 	}
 	
 }

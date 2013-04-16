@@ -30,7 +30,7 @@ public class SecondCounter12 extends JComponent implements Runnable
 	
 	public void runClock()
 	{
-		System.out.println("Thread running runClock() is "+Thread.currentThread().getName());
+		System.out.println("Thread running runClock() is " + Thread.currentThread().getName());
 		DecimalFormat fmt = new DecimalFormat("0.000");
 		long normalSleepTime = 100;
 		long nextSleepTime = normalSleepTime;
@@ -39,7 +39,7 @@ public class SecondCounter12 extends JComponent implements Runnable
 		long startTime = System.currentTimeMillis();
 		keepRunning = true;
 		
-		while(keepRunning)
+		while (keepRunning)
 		{
 			try
 			{
@@ -58,14 +58,14 @@ public class SecondCounter12 extends JComponent implements Runnable
 			
 			double diffSecs = counterSecs - elapsedSecs;
 			
-			nextSleepTime = normalSleepTime + ((long)(diffSecs * 1000.0));
+			nextSleepTime = normalSleepTime + ((long) (diffSecs * 1000.0));
 			
-			if(nextSleepTime < 0)
+			if (nextSleepTime < 0)
 			{
 				nextSleepTime = 0;
 			}
 			
-			timeMsg = fmt.format(counterSecs) + " - " + fmt.format(elapsedSecs) + " = "+ fmt.format(diffSecs);
+			timeMsg = fmt.format(counterSecs) + " - " + fmt.format(elapsedSecs) + " = " + fmt.format(diffSecs);
 			
 			arcLen = ((((int) counterSecs) % 60) * 360) / 60;
 			repaint();
@@ -79,23 +79,23 @@ public class SecondCounter12 extends JComponent implements Runnable
 	
 	public void paint(Graphics g)
 	{
-		System.out.println("Thread invoked paint() is "+Thread.currentThread().getName());
+		System.out.println("Thread invoked paint() is " + Thread.currentThread().getName());
 		
 		g.setColor(Color.black);
 		g.setFont(paintFont);
 		g.drawString(timeMsg, 0, 15);
 		
-		g.fillOval(0, 20, 100, 100); //black border
+		g.fillOval(0, 20, 100, 100); // black border
 		
 		g.setColor(Color.white);
-		g.fillOval(3, 23, 94, 94); //white for unused portion
+		g.fillOval(3, 23, 94, 94); // white for unused portion
 		
-		g.setColor(Color.blue); //blue for used portion
+		g.setColor(Color.blue); // blue for used portion
 		g.fillArc(2, 22, 96, 96, 90, -arcLen);
 	}
 	
 	public static void main(String[] args)
 	{
 		
-	}	
+	}
 }

@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 public class SecondCounterRunnableMain9 extends JPanel
 {
-
+	
 	/**
 	 * 
 	 */
@@ -29,7 +29,7 @@ public class SecondCounterRunnableMain9 extends JPanel
 		startButton = new JButton("Start");
 		stopButton = new JButton("Stop");
 		
-		stopButton.setEnabled(false); //begin this with disabled
+		stopButton.setEnabled(false); // begin this with disabled
 		
 		startButton.addActionListener(new ActionListener()
 		{
@@ -37,15 +37,15 @@ public class SecondCounterRunnableMain9 extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				//disable to stop more "start" requests
+				// disable to stop more "start" requests
 				startButton.setEnabled(false);
 				
-				//thread to run the counter
+				// thread to run the counter
 				Thread counterThread = new Thread(sc);
 				counterThread.start();
 				
 				stopButton.setEnabled(true);
-				stopButton.requestFocus();				
+				stopButton.requestFocus();
 			}
 		});
 		
@@ -58,11 +58,11 @@ public class SecondCounterRunnableMain9 extends JPanel
 				stopButton.setEnabled(false);
 				sc.stopClock();
 				startButton.setEnabled(true);
-				startButton.requestFocus();				
+				startButton.requestFocus();
 			}
 		});
 		
-		JPanel innerButtonPanel = new JPanel();		
+		JPanel innerButtonPanel = new JPanel();
 		innerButtonPanel.setLayout(new GridLayout(0, 1, 0, 3));
 		innerButtonPanel.add(startButton);
 		innerButtonPanel.add(stopButton);
@@ -72,20 +72,20 @@ public class SecondCounterRunnableMain9 extends JPanel
 		buttonP.add(innerButtonPanel, BorderLayout.NORTH);
 		
 		this.setLayout(new BorderLayout(10, 10));
-		this.setBorder(new EmptyBorder(20,20,20,20));
+		this.setBorder(new EmptyBorder(20, 20, 20, 20));
 		this.add(buttonP, BorderLayout.NORTH);
-		this.add(sc, BorderLayout.CENTER);			
+		this.add(sc, BorderLayout.CENTER);
 	}
 	
 	public static void main(String[] args)
 	{
-		System.out.println("Current Thread = "+Thread.currentThread().getName());
+		System.out.println("Current Thread = " + Thread.currentThread().getName());
 		SecondCounterRunnableMain9 scm = new SecondCounterRunnableMain9();
 		
 		JFrame f = new JFrame("Second Counter Runnable");
 		f.setContentPane(scm);
 		f.setSize(320, 400);
-		System.out.println("Current Thread before setting the frame visible = "+Thread.currentThread().getName());
+		System.out.println("Current Thread before setting the frame visible = " + Thread.currentThread().getName());
 		f.setVisible(true);
 		f.addWindowListener(new WindowAdapter()
 		{
@@ -96,5 +96,5 @@ public class SecondCounterRunnableMain9 extends JPanel
 		});
 		
 	}
-
+	
 }

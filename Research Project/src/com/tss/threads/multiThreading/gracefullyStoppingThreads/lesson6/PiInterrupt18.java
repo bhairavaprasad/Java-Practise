@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.gracefullyStoppingThreads.lesson6;
 
+//@formatter:off
 /**
  * The pattern of throwing an InterruptedException when interrupted by another thread is a useful one to extend
  * to other customized methods. For example, imagine that you need a method that performs a complex and long-running
@@ -24,6 +25,7 @@ package com.tss.threads.multiThreading.gracefullyStoppingThreads.lesson6;
  * another thread.
  *
  */
+//@formatter:on
 public class PiInterrupt18 implements Runnable
 {
 	private double latestPiEstimate;
@@ -77,7 +79,7 @@ public class PiInterrupt18 implements Runnable
 		}
 		catch (InterruptedException e)
 		{
-			//ignore
+			// ignore
 		}
 	}
 }

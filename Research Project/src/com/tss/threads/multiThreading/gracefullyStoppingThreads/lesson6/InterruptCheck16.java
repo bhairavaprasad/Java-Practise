@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.gracefullyStoppingThreads.lesson6;
 
+//@formatter:off
 /**
  * You can check the interrupted status of any thread by invoking the isInterrupted() method
  * on the Thread object.
@@ -22,6 +23,7 @@ package com.tss.threads.multiThreading.gracefullyStoppingThreads.lesson6;
  * Point D: t.isInterrupted()=false
  *
  */
+//@formatter:on
 public class InterruptCheck16
 {
 	public static void main(String[] args)
@@ -45,7 +47,7 @@ public class InterruptCheck16
 			System.out.println("Was Interrupted");
 		}
 		
-		System.out.println("Point D: t.isInterrupted()="+t.isInterrupted());
+		System.out.println("Point D: t.isInterrupted()=" + t.isInterrupted());
 		
 	}
 }

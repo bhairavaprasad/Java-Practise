@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 
 import javax.swing.JComponent;
 
+//@formatter:off
 /**
  * It is important that the SecondCounterRunnable8 IS-A Component and it can be added to a container,
  * like JPanel. So extends JComponent.
@@ -34,6 +35,7 @@ import javax.swing.JComponent;
  * variable was not marked as volatile, the while loop would not see the new value and would run the timer forever.
  *
  */
+//@formatter:on
 public class SecondCounterRunnable8 extends JComponent implements Runnable
 {
 	private volatile boolean keepRunning;
@@ -57,14 +59,14 @@ public class SecondCounterRunnable8 extends JComponent implements Runnable
 	
 	public void runClock()
 	{
-		System.out.println("Thread running runClock() is "+Thread.currentThread().getName());
+		System.out.println("Thread running runClock() is " + Thread.currentThread().getName());
 		DecimalFormat fmt = new DecimalFormat("0.000");
 		long normalSleepTime = 100;
 		
 		int counter = 0;
 		keepRunning = true;
 		
-		while(keepRunning)
+		while (keepRunning)
 		{
 			try
 			{
@@ -93,23 +95,23 @@ public class SecondCounterRunnable8 extends JComponent implements Runnable
 	
 	public void paint(Graphics g)
 	{
-		System.out.println("Thread invoked paint() is "+Thread.currentThread().getName());
+		System.out.println("Thread invoked paint() is " + Thread.currentThread().getName());
 		
 		g.setColor(Color.black);
 		g.setFont(paintFont);
 		g.drawString(timeMsg, 0, 15);
 		
-		g.fillOval(0, 20, 100, 100); //black border
+		g.fillOval(0, 20, 100, 100); // black border
 		
 		g.setColor(Color.white);
-		g.fillOval(3, 23, 94, 94); //white for unused portion
+		g.fillOval(3, 23, 94, 94); // white for unused portion
 		
-		g.setColor(Color.blue); //blue for used portion
+		g.setColor(Color.blue); // blue for used portion
 		g.fillArc(2, 22, 96, 96, 90, -arcLen);
 	}
 	
 	public static void main(String[] args)
 	{
 		
-	}	
+	}
 }

@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.concurrentAccess.lesson10;
 
+//@formatter:off
 /**
  * Avoiding accidental corruption of an object:
  * 
@@ -27,6 +28,7 @@ package com.tss.threads.multiThreading.concurrentAccess.lesson10;
  * 
  *
  */
+//@formatter:on
 public class CorruptWrite5
 {
 	private String fName;
@@ -73,7 +75,7 @@ public class CorruptWrite5
 	
 	public static void main(String[] args)
 	{
-		final CorruptWrite5 cw = new CorruptWrite5(); 
+		final CorruptWrite5 cw = new CorruptWrite5();
 		
 		Runnable runA = new Runnable()
 		{

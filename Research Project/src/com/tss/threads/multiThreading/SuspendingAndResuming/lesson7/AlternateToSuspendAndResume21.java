@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.SuspendingAndResuming.lesson7;
 
+//@formatter:off
 /**
  * A new volatile member variable suspended is added to keep track of a request to have the internal
  * thread temporarily stop processing. This flag is initially set to false in beginning of run() method.
@@ -25,9 +26,10 @@ package com.tss.threads.multiThreading.SuspendingAndResuming.lesson7;
  * so don't use it too frequently.
  *
  */
+//@formatter:on
 public class AlternateToSuspendAndResume21 implements Runnable
 {
-
+	
 	private volatile int firstVal;
 	private volatile int secondVal;
 	private volatile boolean suspended;
@@ -54,30 +56,32 @@ public class AlternateToSuspendAndResume21 implements Runnable
 		
 	}
 	
-	private void workMethod() throws InterruptedException
+	private void workMethod()
+		throws InterruptedException
 	{
 		int val = 1;
 		
-		while(true)
+		while (true)
 		{
-			//blocks only if suspended is true
+			// blocks only if suspended is true
 			waitWhileSuspended();
 			
 			stepOne(val);
 			stepTwo(val);
 			val++;
 			
-			//blocks only if suspended is true
+			// blocks only if suspended is true
 			waitWhileSuspended();
 			
-			Thread.sleep(200); //pause before looping again
+			Thread.sleep(200); // pause before looping again
 		}
 	}
 	
-	private void stepOne(int val) throws InterruptedException
+	private void stepOne(int val)
+		throws InterruptedException
 	{
 		firstVal = val;
-		Thread.sleep(300); //simulate some other long long process
+		Thread.sleep(300); // simulate some other long long process
 	}
 	
 	private void stepTwo(int val)
@@ -95,13 +99,17 @@ public class AlternateToSuspendAndResume21 implements Runnable
 		suspended = false;
 	}
 	
-	private void waitWhileSuspended() throws InterruptedException
+	private void waitWhileSuspended()
+		throws InterruptedException
 	{
-		//This is an example of a "busy wait" technique. It is not the best way to wait
-		//for a condition to change because i continually requires some processor cycles
-		//to perform the checks. A better technique is to use Java's built-in wait-notify
-		//mechanism.
-		while(suspended)
+		// This is an example of a "busy wait" technique. It is not the best way
+		// to wait
+		// for a condition to change because i continually requires some
+		// processor cycles
+		// to perform the checks. A better technique is to use Java's built-in
+		// wait-notify
+		// mechanism.
+		while (suspended)
 		{
 			Thread.sleep(200);
 		}
@@ -114,23 +122,23 @@ public class AlternateToSuspendAndResume21 implements Runnable
 		Thread t = new Thread(asr);
 		t.start();
 		
-		//let the other thread get going and run for a while
-		//by making the main thread to sleep for a while		
+		// let the other thread get going and run for a while
+		// by making the main thread to sleep for a while
 		try
 		{
 			Thread.sleep(1000);
 		}
 		catch (InterruptedException e)
 		{
-			//ignore
+			// ignore
 		}
 		
 		for (int i = 0; i < 10; i++)
 		{
-			//t.suspend(); in the old way
+			// t.suspend(); in the old way
 			asr.suspendRequest();
 			
-			//Give the thread a chance to notice the suspension request
+			// Give the thread a chance to notice the suspension request
 			try
 			{
 				Thread.sleep(350);
@@ -140,24 +148,25 @@ public class AlternateToSuspendAndResume21 implements Runnable
 				e1.printStackTrace();
 			}
 			
-			System.out.println("dsr.areValuesEqual()="+asr.areValuesEqual());
+			System.out.println("dsr.areValuesEqual()=" + asr.areValuesEqual());
 			
-			//t.resume(); in the old way
+			// t.resume(); in the old way
 			asr.resumeRequest();
 			
 			try
 			{
-				//pause this main thread running this loop for a random amount of time
-				//between 0 and 2 seconds.
-				Thread.sleep((long)(Math.random() * 2000.0));
+				// pause this main thread running this loop for a random amount
+				// of time
+				// between 0 and 2 seconds.
+				Thread.sleep((long) (Math.random() * 2000.0));
 			}
 			catch (InterruptedException e)
 			{
-				//ignore
+				// ignore
 			}
 		}
 		
-		System.exit(0); //abruptly terminate application
+		System.exit(0); // abruptly terminate application
 	}
 	
 }

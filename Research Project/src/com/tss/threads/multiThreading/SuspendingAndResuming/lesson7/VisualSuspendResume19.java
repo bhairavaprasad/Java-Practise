@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+//@formatter:off
 /**
  * Sometimes you might want to temporarily pause or suspend an executing thread and at later time let
  * it resume execution. As an example, consider a program that uses a thread to animate some images by
@@ -38,10 +39,11 @@ import javax.swing.JTextField;
  * of suspend(), it is not needed.
  *
  */
+//@formatter:on
 public class VisualSuspendResume19 extends JPanel implements Runnable
 {
 	
-	public static final String[] symbolList = {"|", "/", "-", "\\", "|", "/", "-", "\\"};
+	public static final String[] symbolList = { "|", "/", "-", "\\", "|", "/", "-", "\\" };
 	private Thread runThread;
 	private JTextField symbolTF;
 	
@@ -60,7 +62,7 @@ public class VisualSuspendResume19 extends JPanel implements Runnable
 			
 			@Override
 			public void actionPerformed(ActionEvent e)
-			{				
+			{
 				suspendNow();
 			}
 		});
@@ -71,12 +73,12 @@ public class VisualSuspendResume19 extends JPanel implements Runnable
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				resumeNow();				
+				resumeNow();
 			}
 		});
 		
 		JPanel innerStackP = new JPanel();
-		innerStackP.setLayout(new GridLayout(0,1,3,3));
+		innerStackP.setLayout(new GridLayout(0, 1, 3, 3));
 		innerStackP.add(symbolTF);
 		innerStackP.add(suspendB);
 		innerStackP.add(resumeB);
@@ -88,17 +90,17 @@ public class VisualSuspendResume19 extends JPanel implements Runnable
 	@SuppressWarnings("deprecation")
 	private void suspendNow()
 	{
-		if(runThread != null)
+		if (runThread != null)
 			runThread.suspend();
 	}
 	
 	@SuppressWarnings("deprecation")
 	private void resumeNow()
 	{
-		if(runThread != null)
+		if (runThread != null)
 			runThread.resume();
 	}
-
+	
 	@Override
 	public void run()
 	{
@@ -106,15 +108,15 @@ public class VisualSuspendResume19 extends JPanel implements Runnable
 		{
 			// store this for the suspendNow() and resumeNow() methods to use.
 			runThread = Thread.currentThread();
-			int count = 0;			
+			int count = 0;
 			while (true)
 			{
 				// each time through, show the next symbol
-				symbolTF.setText(symbolList[count % symbolList.length]);				
-				Thread.sleep(200);				
+				symbolTF.setText(symbolList[count % symbolList.length]);
+				Thread.sleep(200);
 				count++;
-			}			
-		}		
+			}
+		}
 		catch (InterruptedException e)
 		{
 			// TODO Auto-generated catch block
@@ -122,7 +124,8 @@ public class VisualSuspendResume19 extends JPanel implements Runnable
 		}
 		finally
 		{
-			//The thread is above to die and make sure the reference to it also lost.
+			// The thread is above to die and make sure the reference to it also
+			// lost.
 			runThread = null;
 		}
 	}

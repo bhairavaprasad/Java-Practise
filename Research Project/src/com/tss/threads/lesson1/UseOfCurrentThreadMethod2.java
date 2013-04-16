@@ -1,5 +1,6 @@
 package com.tss.threads.lesson1;
 
+//@formatter:off
 /**
  * At times its useful to know which of the threads currently running in the JVM is
  * executing a segment of code. In multithreaded programming, more than one thread
@@ -12,20 +13,21 @@ package com.tss.threads.lesson1;
  * to take different actions within the code segment.
  *
  */
+//@formatter:on
 public class UseOfCurrentThreadMethod2 extends Thread
 {
 	private Thread creatorThread;
 	
 	public UseOfCurrentThreadMethod2()
 	{
-		//make a not of the thread that constructed me!
+		// make a not of the thread that constructed me!
 		creatorThread = Thread.currentThread();
 	}
 	
 	@Override
 	public void run()
 	{
-		for(int i = 0; i < 10; i++ )
+		for (int i = 0; i < 10; i++)
 		{
 			printMsg();
 		}
@@ -33,16 +35,16 @@ public class UseOfCurrentThreadMethod2 extends Thread
 	
 	public void printMsg()
 	{
-		//get a reference to the thread running this
+		// get a reference to the thread running this
 		Thread t = Thread.currentThread();
 		
-		if(t == creatorThread)
+		if (t == creatorThread)
 		{
 			System.out.println("Creator Thread - Main thread");
 		}
-		else if(t == this)
+		else if (t == this)
 		{
-			System.out.println("New Thread");			
+			System.out.println("New Thread");
 		}
 		else
 		{
@@ -51,11 +53,11 @@ public class UseOfCurrentThreadMethod2 extends Thread
 	}
 	
 	public static void main(String[] args)
-	{	
+	{
 		UseOfCurrentThreadMethod2 uct = new UseOfCurrentThreadMethod2();
 		uct.start();
-		for(int i = 0; i < 10; i++ )
-		{			
+		for (int i = 0; i < 10; i++)
+		{
 			uct.printMsg();
 		}
 	}

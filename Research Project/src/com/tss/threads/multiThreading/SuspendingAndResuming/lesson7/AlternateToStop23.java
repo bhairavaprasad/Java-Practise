@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.SuspendingAndResuming.lesson7;
 
+//@formatter:off
 /**
  * Alternative techniques to very closely simulate and safely replace the functionality of stop()
  * are presented in this example.
@@ -26,20 +27,21 @@ package com.tss.threads.multiThreading.SuspendingAndResuming.lesson7;
  * 
  *
  */
+//@formatter:on
 public class AlternateToStop23 implements Runnable
 {
 	private volatile boolean stopRequested;
 	private Thread runThread;
-
+	
 	@Override
 	public void run()
 	{
 		runThread = Thread.currentThread();
 		stopRequested = false;
 		int count = 0;
-		while(!stopRequested)
+		while (!stopRequested)
 		{
-			System.out.println("Running.... count="+count);
+			System.out.println("Running.... count=" + count);
 			count++;
 			try
 			{
@@ -47,11 +49,13 @@ public class AlternateToStop23 implements Runnable
 			}
 			catch (InterruptedException e)
 			{
-				//This exception is caught, and the thread is re-interrupted
-				//in case any other remaining statements (if there were any after this try catch block)
-				//become stuck and jumps back up to the top of the while loop and checks to see 'stopRequested'
-				//is true and dies...
-				Thread.currentThread().interrupt(); //re-assert
+				// This exception is caught, and the thread is re-interrupted
+				// in case any other remaining statements (if there were any
+				// after this try catch block)
+				// become stuck and jumps back up to the top of the while loop
+				// and checks to see 'stopRequested'
+				// is true and dies...
+				Thread.currentThread().interrupt(); // re-assert
 				
 			}
 		}
@@ -61,7 +65,7 @@ public class AlternateToStop23 implements Runnable
 	public void stopRequest()
 	{
 		stopRequested = true;
-		if(runThread != null)
+		if (runThread != null)
 			runThread.interrupt();
 	}
 	
@@ -77,7 +81,7 @@ public class AlternateToStop23 implements Runnable
 		}
 		catch (InterruptedException e)
 		{
-			//ignore
+			// ignore
 		}
 		as.stopRequest();
 	}

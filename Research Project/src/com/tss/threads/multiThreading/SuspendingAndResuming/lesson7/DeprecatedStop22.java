@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.SuspendingAndResuming.lesson7;
 
+//@formatter:off
 /**
  * A thread is considered to be alive from just after the start() method of the Thread is invoked until it dies.
  * A thread may die by returning from run() -- which is the case in the examples so far. A thread may also die
@@ -19,25 +20,26 @@ package com.tss.threads.multiThreading.SuspendingAndResuming.lesson7;
  * that leaves all objects in a consistent state.
  *
  */
+//@formatter:on
 public class DeprecatedStop22 implements Runnable
 {
-
+	
 	@Override
 	public void run()
 	{
 		int count = 0;
-		while(true)
+		while (true)
 		{
-			System.out.println("Running......Count="+count);
+			System.out.println("Running......Count=" + count);
 			count++;
 			try
 			{
 				Thread.sleep(300);
 			}
 			catch (InterruptedException e)
-			{				
-				//ignore
-			}			
+			{
+				// ignore
+			}
 		}
 		
 	}
@@ -55,10 +57,10 @@ public class DeprecatedStop22 implements Runnable
 		}
 		catch (InterruptedException e)
 		{
-			//ignore
+			// ignore
 		}
 		
-		//Abruptly stop the other thread in tracks!
+		// Abruptly stop the other thread in tracks!
 		t.stop();
 	}
 }

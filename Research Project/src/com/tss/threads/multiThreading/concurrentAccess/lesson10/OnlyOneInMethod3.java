@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.concurrentAccess.lesson10;
 
+//@formatter:off
 /**
  * More than one thread can be inside a method, and each thread keeps a copy of its own local variables.
  * However, there are times when application constraints require that only thread be permitted inside a
@@ -18,6 +19,7 @@ package com.tss.threads.multiThreading.concurrentAccess.lesson10;
  * not block trying to get the object-level lock because it already has exclusive access to the lock. 
  *
  */
+//@formatter:on
 public class OnlyOneInMethod3
 {
 	private String objID;

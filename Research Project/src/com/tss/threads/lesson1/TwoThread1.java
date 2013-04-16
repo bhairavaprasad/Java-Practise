@@ -1,6 +1,6 @@
 package com.tss.threads.lesson1;
 
-
+//@formatter:off
 /**
  * There is no guarantee that the output of this program will be same running it multiple times.
  * Thread scheduling is non-deterministic and depends on many factors, including what else is running
@@ -17,12 +17,13 @@ package com.tss.threads.lesson1;
  * will begin its execution by invoking the run() method (line 23) of TwoThread1.
  *
  */
+//@formatter:on
 public class TwoThread1 extends Thread
 {
 	@Override
 	public void run()
 	{
-		for(int i=0; i < 10; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			System.out.println("In New Thread");
 		}
@@ -32,7 +33,7 @@ public class TwoThread1 extends Thread
 	{
 		TwoThread1 tt = new TwoThread1();
 		tt.start();
-		for(int i=0; i < 10; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			System.out.println("In Main Thread");
 		}

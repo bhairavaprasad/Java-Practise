@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.gracefullyStoppingThreads.lesson6;
 
+//@formatter:off
 /**
  * Threads stop running when they die a natural death returning from the run() method.
  * At times, a thread may be busy doing some involved task for a while (may be indefinitely)
@@ -20,9 +21,10 @@ package com.tss.threads.multiThreading.gracefullyStoppingThreads.lesson6;
  * to throw an InterruptedException. Any thread if it is interrupted before completing its work
  * will throw an InterruptedException.
  */
+//@formatter:on
 public class SleepInterrupt14 implements Runnable
 {
-
+	
 	@Override
 	public void run()
 	{
@@ -47,16 +49,16 @@ public class SleepInterrupt14 implements Runnable
 		Thread t = new Thread(si);
 		t.start();
 		
-		//Be sure that the new thread gets a chance to run for a while
-		//so have the main thread sleep for while, say 2 seconds
+		// Be sure that the new thread gets a chance to run for a while
+		// so have the main thread sleep for while, say 2 seconds
 		try
 		{
-			System.out.println("placing the current thread "+Thread.currentThread()+" to sleep for 2seconds");
-			Thread.sleep(2000); //putting the main thread to sleep
+			System.out.println("placing the current thread " + Thread.currentThread() + " to sleep for 2seconds");
+			Thread.sleep(2000); // putting the main thread to sleep
 		}
 		catch (InterruptedException e)
 		{
-			//ignore					
+			// ignore
 		}
 		
 		System.out.println("in main() while the main thread is running -- interrupting other thread");

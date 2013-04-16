@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 
 import javax.swing.JComponent;
 
+//@formatter:off
 /**
  * The first attempt at the Timer.
  * 
@@ -16,6 +17,7 @@ import javax.swing.JComponent;
  * This version definitely has serious problems, but it illustrates the necessity of another
  * approach.
  */
+//@formatter:on
 public class SecondCounterLockup6 extends JComponent
 {
 	private boolean keepRunning;
@@ -32,7 +34,7 @@ public class SecondCounterLockup6 extends JComponent
 	
 	public void runClock()
 	{
-		System.out.println("Thread running runClock() is "+Thread.currentThread().getName());
+		System.out.println("Thread running runClock() is " + Thread.currentThread().getName());
 		DecimalFormat fmt = new DecimalFormat("0.000");
 		long normalSleepTime = 100;
 		
@@ -68,18 +70,18 @@ public class SecondCounterLockup6 extends JComponent
 	
 	public void paint(Graphics g)
 	{
-		System.out.println("Thread invoked paint() is "+Thread.currentThread().getName());
+		System.out.println("Thread invoked paint() is " + Thread.currentThread().getName());
 		
 		g.setColor(Color.black);
 		g.setFont(paintFont);
 		g.drawString(timeMsg, 0, 15);
 		
-		g.fillOval(0, 20, 100, 100); //black border
+		g.fillOval(0, 20, 100, 100); // black border
 		
 		g.setColor(Color.white);
-		g.fillOval(3, 23, 94, 94); //white for unused portion
+		g.fillOval(3, 23, 94, 94); // white for unused portion
 		
-		g.setColor(Color.blue); //blue for used portion
+		g.setColor(Color.blue); // blue for used portion
 		g.fillArc(2, 22, 96, 96, 90, -arcLen);
 	}
 	

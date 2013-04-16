@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.daemonThreads.lesson8;
 
+//@formatter:off
 /**
  * Threads that are marked as daemons stop in a whole new way. Daemon threads are used for background
  * supporting tasks and are needed only while normal, non-daemon threads are still running. When the
@@ -29,6 +30,7 @@ package com.tss.threads.multiThreading.daemonThreads.lesson8;
  * Daemon threads automatically stop when all the non-daemon threads have died.
  *
  */
+//@formatter:on
 public class DaemonThreadMain
 {
 	public static void main(String[] args)
@@ -36,7 +38,7 @@ public class DaemonThreadMain
 		System.out.println("entering main()");
 		
 		Thread t = new Thread(new DaemonThread());
-		t.setDaemon(true);//marking it as a daemon thread
+		t.setDaemon(true);// marking it as a daemon thread
 		t.start();
 		
 		try

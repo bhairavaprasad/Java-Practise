@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.concurrentAccess.lesson10;
 
+//@formatter:off
 /**
  * 
  * FixedWrite6.java example solved the problem by ensuring that the object was left in a consistent state by
@@ -37,6 +38,7 @@ package com.tss.threads.multiThreading.concurrentAccess.lesson10;
  *  this, care must be taken to ensure that all reads are blocked when the data is in an inconsistent state.
  *
  */
+//@formatter:on
 public class DirtyRead7
 {
 	private String fName;
@@ -105,7 +107,7 @@ public class DirtyRead7
 			@Override
 			public void run()
 			{
-				print("getNames()="+dr.getNames());
+				print("getNames()=" + dr.getNames());
 				
 			}
 		};

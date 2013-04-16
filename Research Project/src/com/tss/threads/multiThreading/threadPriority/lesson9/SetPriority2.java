@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.threadPriority.lesson9;
 
+//@formatter:off
 /**
  * By default, when a new thread is constructed, it runs at the same priority as the thread that constructed it.
  * Most new threads are constructed directly or indirectly by the main thread and will therefore run at a priority
@@ -23,6 +24,7 @@ package com.tss.threads.multiThreading.threadPriority.lesson9;
  * 7 before it started. When threadD runs, it executes the run() inside r. A new thread is constructed by threadD and is 
  * called threadC. The priority of threadC is not changed, but is simply inherited from threadC's creator.
  */
+//@formatter:on
 public class SetPriority2
 {
 	private static Runnable makeRunnable()
@@ -33,17 +35,17 @@ public class SetPriority2
 			@Override
 			public void run()
 			{
-				for(int i=0; i<5; i++)
+				for (int i = 0; i < 5; i++)
 				{
 					Thread t = Thread.currentThread();
-					System.out.println("in run() - priority="+t.getPriority()+", name="+t.getName());
+					System.out.println("in run() - priority=" + t.getPriority() + ", name=" + t.getName());
 					try
 					{
 						Thread.sleep(2000);
 					}
 					catch (InterruptedException e)
-					{						
-						//ignore
+					{
+						// ignore
 					}
 				}
 				
@@ -55,7 +57,7 @@ public class SetPriority2
 	
 	public static void main(String[] args)
 	{
-				
+		
 		Thread threadA = new Thread(makeRunnable(), "threadA");
 		threadA.setPriority(8);
 		threadA.start();
@@ -65,12 +67,12 @@ public class SetPriority2
 		threadB.start();
 		
 		Runnable r = new Runnable()
-		{			
+		{
 			@Override
 			public void run()
 			{
 				Thread threadC = new Thread(makeRunnable(), "threadC");
-				threadC.start();				
+				threadC.start();
 			}
 		};
 		
@@ -84,10 +86,10 @@ public class SetPriority2
 		}
 		catch (InterruptedException e)
 		{
-			//ignore
+			// ignore
 		}
 		
 		threadA.setPriority(3);
-		System.out.println("in main() - threadA.getPriority()="+threadA.getPriority());
+		System.out.println("in main() - threadA.getPriority()=" + threadA.getPriority());
 	}
 }

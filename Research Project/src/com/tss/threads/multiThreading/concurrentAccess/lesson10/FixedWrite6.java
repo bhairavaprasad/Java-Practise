@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.concurrentAccess.lesson10;
 
+//@formatter:off
 /**
  * This example corrects the dangerous code in CorruptWrite5.java, by simply adding the
  * synchronized method modifier to the setNames() method. 
@@ -12,6 +13,7 @@ package com.tss.threads.multiThreading.concurrentAccess.lesson10;
  * to the lock and enters setNames() method.
  *
  */
+//@formatter:on
 public class FixedWrite6
 {
 	private String fName;
@@ -58,7 +60,7 @@ public class FixedWrite6
 	
 	public static void main(String[] args)
 	{
-		final FixedWrite6 fw = new FixedWrite6(); 
+		final FixedWrite6 fw = new FixedWrite6();
 		
 		Runnable runA = new Runnable()
 		{

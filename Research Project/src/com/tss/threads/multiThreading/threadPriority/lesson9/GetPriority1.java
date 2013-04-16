@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.threadPriority.lesson9;
 
+//@formatter:off
 /**
  * Java allows you to give each of the threads running in a virtual machine a priority. Higher priority threads
  * generally get more of a chance to run than lower-priority threads, but exact thread scheduling behavior varies
@@ -46,6 +47,7 @@ package com.tss.threads.multiThreading.threadPriority.lesson9;
  * Threads running at this priority usually get a chance to run without hogging the processor.
  *
  */
+//@formatter:on
 public class GetPriority1
 {
 	private static Runnable makeRunnable()
@@ -56,17 +58,17 @@ public class GetPriority1
 			@Override
 			public void run()
 			{
-				for(int i=0; i<5; i++)
+				for (int i = 0; i < 5; i++)
 				{
 					Thread t = Thread.currentThread();
-					System.out.println("in run() - priority="+t.getPriority()+", name="+t.getName());
+					System.out.println("in run() - priority=" + t.getPriority() + ", name=" + t.getName());
 					try
 					{
 						Thread.sleep(2000);
 					}
 					catch (InterruptedException e)
-					{						
-						//ignore
+					{
+						// ignore
 					}
 				}
 				
@@ -78,8 +80,8 @@ public class GetPriority1
 	
 	public static void main(String[] args)
 	{
-		System.out.println("in main() - Thread.currentThread().getPriority()="+Thread.currentThread().getPriority());
-		System.out.println("in main() - Thread.currentThread().getName()="+Thread.currentThread().getName());
+		System.out.println("in main() - Thread.currentThread().getPriority()=" + Thread.currentThread().getPriority());
+		System.out.println("in main() - Thread.currentThread().getName()=" + Thread.currentThread().getName());
 		
 		Thread threadA = new Thread(makeRunnable(), "threadA");
 		threadA.start();
@@ -90,9 +92,9 @@ public class GetPriority1
 		}
 		catch (InterruptedException e)
 		{
-			//ignore
+			// ignore
 		}
 		
-		System.out.println("in main() - threadA.getPriority()="+threadA.getPriority());
+		System.out.println("in main() - threadA.getPriority()=" + threadA.getPriority());
 	}
 }

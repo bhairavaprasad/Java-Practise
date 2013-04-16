@@ -1,5 +1,6 @@
 package com.tss.threads.lesson1;
 
+//@formatter:off
 /**
  * Sometimes it would be useful if a thread could take a break and go to sleep for a while.
  * 
@@ -14,6 +15,7 @@ package com.tss.threads.lesson1;
  * that it should take some sort of action.
  *
  */
+//@formatter:on
 public class UseOfThreadSleepMethod5 extends Thread
 {
 	public void run()
@@ -23,25 +25,26 @@ public class UseOfThreadSleepMethod5 extends Thread
 	
 	public void loop()
 	{
-		//get a reference to the thread running this
+		// get a reference to the thread running this
 		Thread t = Thread.currentThread();
 		String name = t.getName();
 		
-		System.out.println("Just entered loop() - "+ name);
+		System.out.println("Just entered loop() - " + name);
 		
-		for(int i=0; i < 10; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			try
 			{
 				Thread.sleep(200);
 			}
-			catch (InterruptedException e) {
-				//ignore
+			catch (InterruptedException e)
+			{
+				// ignore
 			}
-			System.out.println("name = "+name);
+			System.out.println("name = " + name);
 		}
 		
-		System.out.println("about to leave loop() - "+ name);
+		System.out.println("about to leave loop() - " + name);
 	}
 	
 	public static void main(String[] args)
@@ -50,21 +53,26 @@ public class UseOfThreadSleepMethod5 extends Thread
 		ut.setName("My worker Thread");
 		ut.start();
 		
-		//pause for a bit
+		// pause for a bit
 		try
 		{
-			Thread.sleep(700);			
+			Thread.sleep(700);
 		}
-		catch (InterruptedException e) {
+		catch (InterruptedException e)
+		{
 			// ignore
 		}
 		
 		ut.loop();
 	}
 	
-	// In examining the output, you notice that both threads are inside the loop() method
-	// at the same time. Yet, each thread has its own copy of the local variable 'name' to
-	// print its proper identification. Local variable works with multiple threads, but
-	// accessing and modifying member variables(the state of an object) with multiple threads
+	// In examining the output, you notice that both threads are inside the
+	// loop() method
+	// at the same time. Yet, each thread has its own copy of the local variable
+	// 'name' to
+	// print its proper identification. Local variable works with multiple
+	// threads, but
+	// accessing and modifying member variables(the state of an object) with
+	// multiple threads
 	// is tricky business.
 }

@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.concurrentAccess.lesson10;
 
+//@formatter:off
 /**
  * If two or more threads are simultaneously inside a method, each thread has its own copy of local variables.
  * 
@@ -11,6 +12,7 @@ package com.tss.threads.multiThreading.concurrentAccess.lesson10;
  * method of the same object.
  *
  */
+//@formatter:on
 public class BothInMethod2
 {
 	private String objID;

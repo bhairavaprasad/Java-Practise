@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.concurrentAccess.lesson10;
 
+//@formatter:off
 /**
  * Output of the program looks like
  * 
@@ -18,6 +19,7 @@ package com.tss.threads.multiThreading.concurrentAccess.lesson10;
  * unnecessary and slows execution.
  *
  */
+//@formatter:on
 public class CleanRead8
 {
 	private String fName;
@@ -86,7 +88,7 @@ public class CleanRead8
 			@Override
 			public void run()
 			{
-				print("getNames()="+cr.getNames());
+				print("getNames()=" + cr.getNames());
 				
 			}
 		};

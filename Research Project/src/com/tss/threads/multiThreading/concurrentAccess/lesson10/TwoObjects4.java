@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.concurrentAccess.lesson10;
 
+//@formatter:off
 /**
  * Every instance of a class has its own object-level lock. 
  * 
@@ -11,6 +12,7 @@ package com.tss.threads.multiThreading.concurrentAccess.lesson10;
  * access to the object level lock of the instance it is working on.
  *
  */
+//@formatter:on
 public class TwoObjects4
 {
 	private String objID;

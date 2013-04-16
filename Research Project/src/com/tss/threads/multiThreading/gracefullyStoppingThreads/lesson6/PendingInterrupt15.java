@@ -1,5 +1,6 @@
 package com.tss.threads.multiThreading.gracefullyStoppingThreads.lesson6;
 
+//@formatter:off
 /**
  * If an interrupt is pending before the sleep() method is called, it immediately throws
  * an InterruptedException.
@@ -13,13 +14,14 @@ package com.tss.threads.multiThreading.gracefullyStoppingThreads.lesson6;
  *
  * If no command-line argument is passed to the program the message "Was not interrupted" is printed.
  */
+//@formatter:on
 public class PendingInterrupt15
 {
 	public static void main(String[] args)
 	{
 		if (args.length > 0)
 		{
-			Thread.currentThread().interrupt(); //same as --    Thread.interrupt()
+			Thread.currentThread().interrupt(); // same as -- Thread.interrupt()
 		}
 		
 		long startTime = System.currentTimeMillis();
@@ -34,6 +36,6 @@ public class PendingInterrupt15
 		}
 		
 		long elapsedTime = System.currentTimeMillis() - startTime;
-		System.out.println("Elapsed Time = "+elapsedTime);
+		System.out.println("Elapsed Time = " + elapsedTime);
 	}
 }
