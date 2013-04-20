@@ -66,13 +66,12 @@ public class UseOfThreadSleepMethod5 extends Thread
 		ut.loop();
 	}
 	
-	// In examining the output, you notice that both threads are inside the
-	// loop() method
-	// at the same time. Yet, each thread has its own copy of the local variable
-	// 'name' to
-	// print its proper identification. Local variable works with multiple
-	// threads, but
-	// accessing and modifying member variables(the state of an object) with
-	// multiple threads
-	// is tricky business.
+	/*
+	 * In examining the output, you notice that both threads are inside the
+	 * loop() method at the same time. Yet, each thread has its own copy of the
+	 * local variable 'name' to print its proper identification. Local variable
+	 * works with multiple threads, but accessing and modifying member
+	 * variables(the state of an object) with multiple threads is tricky
+	 * business.
+	 */
 }

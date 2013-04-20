@@ -12,9 +12,9 @@ package com.tss.threads.lesson1;
  * Thread scheduling is non-deterministic.
  * 
  * Application execution begins with main thread, which is spawned by Java VM for all applications at
- * startup, entering main() method at (line 31). It proceeds to create a new TwoThread1 instance (line 33).
- * Next, it spawns a new thread of execution by invoking the start() method (line 34). This new thread
- * will begin its execution by invoking the run() method (line 23) of TwoThread1.
+ * startup, entering main() method at (line 32). It proceeds to create a new TwoThread1 instance (line 34).
+ * Next, it spawns a new thread of execution by invoking the start() method (line 35). This new thread
+ * will begin its execution by invoking the run() method (line 24) of TwoThread1.
  *
  */
 //@formatter:on

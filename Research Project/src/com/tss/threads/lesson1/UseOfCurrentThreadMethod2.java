@@ -20,7 +20,7 @@ public class UseOfCurrentThreadMethod2 extends Thread
 	
 	public UseOfCurrentThreadMethod2()
 	{
-		// make a not of the thread that constructed me!
+		// make a note of the thread that constructed me!
 		creatorThread = Thread.currentThread();
 	}
 	
