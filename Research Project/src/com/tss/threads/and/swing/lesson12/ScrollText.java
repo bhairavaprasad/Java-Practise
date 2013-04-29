@@ -33,7 +33,7 @@ public class ScrollText extends JComponent
 		setMinimumSize(imageSize);
 		setPreferredSize(imageSize);
 		setMaximumSize(imageSize);
-		setSize(imageSize);
+		setSize(imageSize);                                     
 		
 		noStopRequested = true;
 		Runnable r = new Runnable()

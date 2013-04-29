@@ -38,8 +38,17 @@ public class InvokeAndWaitDemo extends Object
 			{
 				public void run()
 				{
-					print("about to do setText()");
-					label.setText("New text!");
+					try
+					{
+						Thread.sleep(5000);
+						print("about to do setText()");
+						label.setText("New text!");
+						print("finished setting the text");
+					}
+					catch (InterruptedException e)
+					{						
+						e.printStackTrace();
+					}
 				}
 			};
 			
