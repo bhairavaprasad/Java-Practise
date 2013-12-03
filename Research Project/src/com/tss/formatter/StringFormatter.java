@@ -3,8 +3,7 @@ package com.tss.formatter;
 import java.util.Calendar;
 import java.util.Locale;
 
-
-
+//@formatter:off
 /**
  * 
 Converters and Flags Used in TestFormat.java
@@ -29,6 +28,8 @@ tD	 				A date & time conversion—date as %tm%td%ty
 
  *
  */
+//@formatter:on
+
 public class StringFormatter
 {
 	
